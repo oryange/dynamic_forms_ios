@@ -1,5 +1,5 @@
 import Foundation
 
 protocol FormDataSource {
-    func getForm(fileName: String) -> Form?
+    func getForm(filename: String) -> Form?
 }

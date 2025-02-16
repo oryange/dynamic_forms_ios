@@ -23,8 +23,8 @@ class AssetFormRepository: FormDataSource {
         }
     }
     
-    func getForm(fileName: String) -> Form? {
-        guard let json = loadJsonFromAssets(fileName: fileName) else {
+    func getForm(filename: String) -> Form? {
+        guard let json = loadJsonFromAssets(fileName: filename) else {
             return nil
         }
         

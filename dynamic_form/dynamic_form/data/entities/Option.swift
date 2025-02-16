@@ -1,6 +1,6 @@
 import Foundation
 
-struct Option: Codable {
+struct Option: Codable, Equatable {
     let label: String
     let value: String
 }

@@ -12,12 +12,12 @@ struct ContentView: View {
                     .padding(.top, 20)
                 
                 HStack(spacing: 16) {
-                    NavigationLink(destination: FormView(formType: "FORM_ONE")) {
+                    NavigationLink(destination: FormViewController(formType: "FORM_ONE")) {
                         Text("Form One")
                             .buttonStyle()
                     }
                     
-                    NavigationLink(destination: FormView(formType: "FORM_TWO")) {
+                    NavigationLink(destination: FormViewController(formType: "FORM_TWO")) {
                         Text("Form Two")
                             .buttonStyle()
                     }

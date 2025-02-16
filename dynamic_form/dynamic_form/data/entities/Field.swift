@@ -1,6 +1,7 @@
 import Foundation
 
-struct Field: Codable {
+struct Field: Codable, Equatable, Identifiable {
+    var id: String { uuid }
     let type: String
     let label: String
     let name: String
