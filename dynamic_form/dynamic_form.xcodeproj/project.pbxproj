@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		058935802D62331F00ED0475 /* 200-form.json in Resources */ = {isa = PBXBuildFile; fileRef = 0589357F2D62331F00ED0475 /* 200-form.json */; };
+		058935822D62333000ED0475 /* all-fields.json in Resources */ = {isa = PBXBuildFile; fileRef = 058935812D62333000ED0475 /* all-fields.json */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		058935632D622A4500ED0475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		058935522D622A4200ED0475 /* dynamic_form.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dynamic_form.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		058935622D622A4400ED0475 /* dynamic_formTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dynamic_formTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0589356C2D622A4500ED0475 /* dynamic_formUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dynamic_formUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0589357F2D62331F00ED0475 /* 200-form.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "200-form.json"; sourceTree = "<group>"; };
+		058935812D62333000ED0475 /* all-fields.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "all-fields.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,10 +82,11 @@
 		058935492D622A4200ED0475 = {
 			isa = PBXGroup;
 			children = (
-				058935542D622A4200ED0475 /* dynamic_form */,
+				0589359B2D624E8000ED0475 /* Resources */,
 				058935652D622A4500ED0475 /* dynamic_formTests */,
 				0589356F2D622A4500ED0475 /* dynamic_formUITests */,
 				058935532D622A4200ED0475 /* Products */,
+				058935542D622A4200ED0475 /* dynamic_form */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +98,15 @@
 				0589356C2D622A4500ED0475 /* dynamic_formUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0589359B2D624E8000ED0475 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0589357F2D62331F00ED0475 /* 200-form.json */,
+				058935812D62333000ED0475 /* all-fields.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +229,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				058935822D62333000ED0475 /* all-fields.json in Resources */,
+				058935802D62331F00ED0475 /* 200-form.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
