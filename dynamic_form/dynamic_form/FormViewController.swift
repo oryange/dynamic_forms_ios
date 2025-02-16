@@ -7,11 +7,18 @@ struct FormViewController: View {
     var body: some View {
         VStack {
             if let form = viewModel.form {
-                List(form.fields) { field in
-                    FormFieldView(field: field)
+                List {
+                    ForEach(form.elements) { element in
+                        switch element {
+                        case .field(let field):
+                            FormFieldView(field: field)
+                        case .section(let section):
+                            FormSectionView(section: section)
+                        }
+                    }
                 }
             } else {
-                Text("Carregando...")
+                Text("loading...")
             }
         }
         .onAppear {

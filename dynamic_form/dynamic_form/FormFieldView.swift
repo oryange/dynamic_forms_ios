@@ -2,7 +2,6 @@ import SwiftUI
 
 struct FormFieldView: View {
     let field: Field
-
     var body: some View {
         VStack(alignment: .leading) {
             Text(field.label)
