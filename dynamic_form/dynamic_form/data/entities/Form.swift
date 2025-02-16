@@ -1,5 +1,6 @@
 import Foundation
-struct Form: Decodable {
+
+struct Form: Codable {
     let title: String
     let fields: [Field]
     let sections: [Section]
