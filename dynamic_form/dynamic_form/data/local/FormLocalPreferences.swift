@@ -1,6 +1,6 @@
 import Foundation
 
-class FormSharedPreferences: FormPreferences {
+class FormLocalPreferences: FormPreferences {
     
     private let userDefaults = UserDefaults.standard
     private let encoder = JSONEncoder()
@@ -13,7 +13,7 @@ class FormSharedPreferences: FormPreferences {
         }
         return false
     }
-
+    
     func getFormToCache(filename: String) -> String? {
         guard let data = userDefaults.data(forKey: filename),
               let form = try? decoder.decode(Form.self, from: data) else {
@@ -22,35 +22,46 @@ class FormSharedPreferences: FormPreferences {
         return String(data: data, encoding: .utf8)
     }
     
-    func saveStringInputValue(fieldId: String, value: String) {
-        userDefaults.set(value, forKey: "input_\(fieldId)")
+    func saveStringInputValue(filename:String, fieldId: String, value: String) {
+        userDefaults.set(value, forKey: "\(filename)_input_\(fieldId)")
     }
     
-    func getStringInputValue(fieldId: String) -> String? {
-        return userDefaults.string(forKey: "input_\(fieldId)")
+    func getStringInputValue(filename:String, fieldId: String) -> String? {
+        return userDefaults.string(forKey: "\(filename)_input_\(fieldId)")
     }
-
-    func saveIntInputValue(fieldId: String, value: Int) {
-        userDefaults.set(value, forKey: "input_\(fieldId)")
+    
+    func saveIntInputValue(filename:String, fieldId: String, value: Int) {
+        userDefaults.set(value, forKey: "\(filename)_input_\(fieldId)")
     }
-
-    func getIntInputValue(fieldId: String) -> Int? {
-        return userDefaults.integer(forKey: "input_\(fieldId)")
+    
+    func getIntInputValue(filename:String, fieldId: String) -> Int? {
+        return userDefaults.integer(forKey: "\(filename)_input_\(fieldId)")
     }
-
-    func saveDropdownValue(fieldId: String, selectedIndex: Int) {
-        userDefaults.set(selectedIndex, forKey: "dropdown_\(fieldId)")
+    
+    func saveDropdownValue(filename:String, fieldId: String, selectedIndex: Int) {
+        userDefaults.set(selectedIndex, forKey: "\(filename)_dropdown_\(fieldId)")
     }
-
-    func getDropdownValue(fieldId: String) -> Int {
-        return userDefaults.integer(forKey: "dropdown_\(fieldId)")
+    
+    func getDropdownValue(filename:String, fieldId: String) -> Int {
+        return userDefaults.integer(forKey: "\(filename)_dropdown_\(fieldId)")
     }
-
-    func clearInputValues() {
-        let keysToRemove = userDefaults.dictionaryRepresentation().keys.filter {
-            $0.hasPrefix("input_") || $0.hasPrefix("dropdown_")
+    
+    
+    func getAllInputValuesFromCache(filename: String) -> [String: Any] {
+        return userDefaults.dictionaryRepresentation()
+    }
+    
+    func clearInputValues(filename: String) {
+        let allValues = getAllInputValuesFromCache(filename: filename)
+        let keysToRemove = allValues.keys.filter {
+            $0.contains("\(filename)_input_") || $0.contains("\(filename)_dropdown_")
         }
         
-        keysToRemove.forEach { userDefaults.removeObject(forKey: $0) }
+        for key in keysToRemove {
+            userDefaults.removeObject(forKey: key)
+        }
+        
+        userDefaults.synchronize()
     }
 }
+

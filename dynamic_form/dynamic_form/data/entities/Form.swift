@@ -2,8 +2,8 @@ import Foundation
 
 struct Form: Codable {
     let title: String
-    let fields: [Field]
-    let sections: [Section]
+    var fields: [Field]
+    var sections: [Section]
     
     var elements: [FormElement] {
         var combinedElements: [FormElement] = []

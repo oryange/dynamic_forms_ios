@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @State private var form: Form? = nil
     
     var body: some View {
@@ -12,12 +12,12 @@ struct ContentView: View {
                     .padding(.top, 20)
                 
                 HStack(spacing: 16) {
-                    NavigationLink(destination: FormViewController(formType: "FORM_ONE")) {
+                    NavigationLink(destination: FormView(filename: "200-form")) {
                         Text("Form One")
                             .buttonStyle()
                     }
                     
-                    NavigationLink(destination: FormViewController(formType: "FORM_TWO")) {
+                    NavigationLink(destination: FormView(filename: "all-fields")) {
                         Text("Form Two")
                             .buttonStyle()
                     }
@@ -49,8 +49,4 @@ extension View {
             .foregroundColor(.white)
             .cornerRadius(10)
     }
-}
-
-#Preview {
-    ContentView()
 }
