@@ -21,7 +21,7 @@ class FormViewModel: ObservableObject {
                 let decodedForm = try jsonDecoder.decode(Form.self, from: data)
                 self.form = decodedForm
             } catch {
-                print("Erro ao decodificar o formulário do cache: \(error)")
+                print("The error decoding the form from the cache:\(error)")
             }
         } else {
             if let fetchedForm = repository.getForm(filename: filename) {
@@ -55,7 +55,7 @@ class FormViewModel: ObservableObject {
             
             return preferences.saveFormToCache(filename: filename, form: updatedForm)
         } catch {
-            print("Erro ao decodificar o formulário: \(error)")
+            print("Error decoding the form:\(error)")
             return false
         }
     }

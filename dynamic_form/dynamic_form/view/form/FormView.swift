@@ -5,7 +5,6 @@ struct FormView: View {
     @StateObject private var viewModel: FormViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    
     init(filename: String) {
         self.filename = filename
         _viewModel = StateObject(wrappedValue: FormViewModel())
@@ -19,9 +18,14 @@ struct FormView: View {
                         ForEach(form.elements) { element in
                             switch element {
                             case .field(let field):
-                                FormFieldView(field: field, filename: filename)
+                                FormFieldView(field: field, filename: filename, removeField: { fieldToRemove in
+                                    viewModel.removeFieldToFormInCache(filename: filename, removeField: fieldToRemove)
+                                })
+                                
                             case .section(let section):
-                                FormSectionView(section: section, filename: filename)
+                                FormSectionView(section: section, filename: filename, removeSection: { sectionToRemove in
+                                    viewModel.removeFieldToFormInCache(filename: filename, removeSection: sectionToRemove)
+                                })
                             }
                         }
                     }
